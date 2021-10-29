@@ -30,7 +30,7 @@ function validateActions(req, res, next) {
     const { project_id } = req.body 
     if (!project_id) {
         res.status(400).json({
-            message: 'Action ID is missing'
+        message: 'Action ID is missing'
         })
     } else {
         req.project_id = project_id
