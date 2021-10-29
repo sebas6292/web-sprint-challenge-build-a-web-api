@@ -1,3 +1,15 @@
+require('dotenv').config()
+
+const express = require('express')
+
+const server = express() 
+
+const PORT = process.env.PORT || undefined
+
+server.listen(PORT, () => { 
+    console.log(`listening on ${PORT}`)
+})
+
 /*
 play this: https://www.youtube.com/watch?v=d-diB65scQU
 
@@ -12,3 +24,5 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Pull your server into this file and start it!
 */
+
+
