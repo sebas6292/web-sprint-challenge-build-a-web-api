@@ -1,5 +1,4 @@
 const Action = require('./actions-model')
-const yup = require('yup')
 
 function handleError(err, req, res, next) { //eslint-disable-line
         res.status(err.status || 500).json({
@@ -27,27 +26,17 @@ async function validateActionId (req, res, next) {
     }
 }
 
-const actionSchema = yup.object().shape({
-    project_id: yup
-    .string()
-    .typeError('needs to be a string')
-    .required('NEED an ID')
-    .max(128, 'cannot be longer than 128')
-})
-
-async function validateActions(req, res, next) {
-    try {
-        const validated = await actionSchema.validate(
-            req.body,
-            {strict: false, stripUnknown: true}
-        )
-        req.body = validated
+function validateActions(req, res, next) {
+    const { project_id } = req.body 
+    if (!project_id) {
+        res.status(400).json({
+            message: 'Action ID is missing'
+        })
+    } else {
+        req.project_id = project_id
         next()
-    } catch (err) {
-        next({ status: 400, message: err.message})
     }
 }
-
 
 module.exports = {
     handleError,
