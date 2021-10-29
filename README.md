@@ -162,6 +162,8 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
     - middleware helps use validate certain task by either creating functions like route handlers or having built in middleware like express that helps check and validate certain aspects that we want to check in the application. 
 
 1. The basic principles of the REST architectural style.
+    CRUD : create, read, update and delete 
+    these are useful endpoints to modify an app,
     Everything is a resource.
     Each resource connects to special URI.
     Resources can have multiple representations.
@@ -169,10 +171,12 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
     Resource management occurs in HTTP methods.
 
 1. Understand and explain the use of Express Routers.
+    - they are middleware, used to help design, organize and assist 
     - Express routers exists in the express application
     - They have they're own middleware and routing
     - they are design to carry out specific endpoints organized in a specific location to then be used someplace else
 
 1. Describe tooling used to manually test the correctness of an API.
     - HTTPIE, postmon, or using the debugger on the vs code to mark specific location and test specific middlwate are crucial to validate and locate what is currently happening to the browser/code 
+    - Once you develop a REST or crud operation, depending on the specific crud, go ahead and manually test each endpoint to detect if the following endpoints are being created, deleting, updating or retrieving also check for the bad endpoints as well. 
 
