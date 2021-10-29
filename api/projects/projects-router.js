@@ -1,5 +1,9 @@
 const express = require('express')
-const { handleError, validateProjectId } = require('./projects-middleware')
+const { 
+    handleError, 
+    validateProjectId, 
+    validateProjects 
+} = require('./projects-middleware')
 
 const Projects = require('./projects-model')
 const router = express.Router(); 
@@ -16,44 +20,21 @@ router.get('/:id', validateProjectId, (req, res) => {
     res.json(req.project)
 })
 
-// router.post('/', (req, res, next) => { 
-//     Projects.insert({ project_id: req.project_id })
-//     .then(newproject => { 
-//       res.status(201).json(newproject)
-//     })
-//     .catch(next)
-// })
+router.post('/', validateProjects, (req, res, next) => { 
+    Projects.insert(req.body)
+    .then(newProject=> { 
+      res.status(201).json(newProject)
+    })
+    .catch(next)
+})
 
-// router.post('/', (req, res, next) => { 
-//     const { project_id } = req.body
-//     if (!project_id) { 
-//         res.status(400).json({ 
-//         message: 'Please provide the requirements for the project',
-//         })
-//     } else { 
-//         Projects.insert({ project_id })
-//         .then(({ id }) => {
-//             return Projects.insert(id)
-//         })
-//         .then(project => {
-//         res.status(201).json(project)
-//         })
-//         .catch(next)
-//     }
-// })
-
-// router.put('/:id', validateProjectId, (req, res, next) => { 
-//     Projects.update(req.params.id, { project_id: req.project_id})
-//     if (!project_id) {
-//         res.status(400).json({ 
-//             message: 'Please provide the requirements for the project',
-//             })
-//     } 
-//     .then(updateproject => {
-//          res.json(updateproject)
-//     })
-//     .catch(next)
-// })
+router.put('/:id', validateProjectId, validateProjects, (req, res, next) => { 
+    Projects.update(req.params.id, req.body)
+   .then(project => {
+       res.status(200).json(project)
+   })
+    .catch(next)
+})
 
 router.delete('/:id', validateProjectId, async (req, res, next) => { 
     try { 

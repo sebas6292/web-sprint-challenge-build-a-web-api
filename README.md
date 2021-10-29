@@ -147,7 +147,32 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+- Node.js 
+  benefits :
+    - single threaded, removes the complexity of handling multiple threads
+    - asynchronous, takes advantage of the processor because we are running on a single CPU 
+    - access to the npm repository and npm modules 
+- Express 
+  benefits : 
+    - easier to create web apps and services
+    - serves static content like html files, images, audio, PDFs
+    - compatible with middleware
+
 1. Understand and explain the use of Middleware.
+    - middleware helps use validate certain task by either creating functions like route handlers or having built in middleware like express that helps check and validate certain aspects that we want to check in the application. 
+
 1. The basic principles of the REST architectural style.
+    Everything is a resource.
+    Each resource connects to special URI.
+    Resources can have multiple representations.
+    Communication occurs in a stateless protocol (HTTP).
+    Resource management occurs in HTTP methods.
+
 1. Understand and explain the use of Express Routers.
+    - Express routers exists in the express application
+    - They have they're own middleware and routing
+    - they are design to carry out specific endpoints organized in a specific location to then be used someplace else
+
 1. Describe tooling used to manually test the correctness of an API.
+    - HTTPIE, postmon, or using the debugger on the vs code to mark specific location and test specific middlwate are crucial to validate and locate what is currently happening to the browser/code 
+
